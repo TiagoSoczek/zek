@@ -10,7 +10,7 @@ namespace TMS
     {
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddZek();
+            services.AddZek<Startup>();
             
             return services.BuildServiceProvider();
         }

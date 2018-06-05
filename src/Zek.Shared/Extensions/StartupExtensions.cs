@@ -13,6 +13,8 @@ namespace Zek.Shared.Extensions
 {
     public static class StartupExtensions
     {
+        private static Assembly startupAssembly;
+
         public static void UseZek(this IApplicationBuilder app)
         {
             if (app == null)
@@ -30,12 +32,14 @@ namespace Zek.Shared.Extensions
             app.UseMvc();
         }
 
-        public static IServiceCollection AddZek(this IServiceCollection services)
+        public static IServiceCollection AddZek<T>(this IServiceCollection services)
         {
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
             }
+
+            startupAssembly = typeof(T).Assembly;
 
             services.AddMvc(options => options.ConfigureZekFilters())
                 .SetCompatibilityVersion(CompatibilityVersion.Latest)
@@ -47,7 +51,7 @@ namespace Zek.Shared.Extensions
 
             Mapper.AssertConfigurationIsValid();
 
-            services.AddMediatR(Assembly.GetEntryAssembly());
+            services.AddMediatR(startupAssembly);
 
             return services;
         }
@@ -67,7 +71,7 @@ namespace Zek.Shared.Extensions
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            builder.AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssembly(Assembly.GetEntryAssembly()));
+            builder.AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssembly(startupAssembly));
 
             return builder;
         }

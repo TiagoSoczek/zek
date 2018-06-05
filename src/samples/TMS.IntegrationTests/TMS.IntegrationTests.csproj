@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
+
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+
+        <ProjectReference Include="..\..\Zek.IntegrationTests\Zek.IntegrationTests.csproj" />
+
+        <ProjectReference Include="..\TMS\TMS.csproj" />
+    </ItemGroup>
+
+</Project>
