@@ -3,9 +3,8 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
         <PackageId>Zek</PackageId>
-        <Version>0.1.0</Version>
+        <VersionPrefix>0.1.0</VersionPrefix>
         <Authors>Tiago Soczek</Authors>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
