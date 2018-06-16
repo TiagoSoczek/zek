@@ -18,7 +18,7 @@ namespace TMS.Flights.Api
         [HttpGet]
         public async Task<ActionResult<FlightOfferDto[]>> Search(SearchFlightsCommand cmd)
         {
-            var result = await Mediator.Send(cmd);
+            var result = await Mediator.Send(cmd).ConfigureAwait(false);
 
             return As<FlightOfferDto[]>(result);
         }

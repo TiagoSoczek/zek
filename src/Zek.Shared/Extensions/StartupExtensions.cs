@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Zek.Shared.Api.Filters;
+using Zek.Shared.Tasks;
 
 namespace Zek.Shared.Extensions
 {
@@ -52,6 +53,8 @@ namespace Zek.Shared.Extensions
             Mapper.AssertConfigurationIsValid();
 
             services.AddMediatR(startupAssembly);
+
+            services.AddScheduler();
 
             return services;
         }

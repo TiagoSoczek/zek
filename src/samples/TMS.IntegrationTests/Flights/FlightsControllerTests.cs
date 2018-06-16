@@ -9,7 +9,7 @@ namespace TMS.IntegrationTests.Flights
         [Fact]
         public async Task SearchFlights()
         {
-            var response = await Client.GetAsync("flights?origin=CWB&destination=CGH&departureDate=06-30-2018");
+            var response = await Client.GetAsync("flights?origin=CWB&destination=CGH&departureDate=06-30-2018").ConfigureAwait(false);
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }

@@ -21,7 +21,7 @@ namespace TMS.Flights.Commands
 
         public class Handler : IRequestHandler<SearchFlightsCommand, Result<FlightOffer[]>>
         {
-            public async Task<Result<FlightOffer[]>> Handle(SearchFlightsCommand request, CancellationToken cancellationToken)
+            public Task<Result<FlightOffer[]>> Handle(SearchFlightsCommand request, CancellationToken cancellationToken)
             {
                 // Assume 1-day trip when no return date informed
                 var returnDate = request.ReturnDate ?? request.DepartureDate.AddDays(1);
@@ -53,7 +53,7 @@ namespace TMS.Flights.Commands
                     }
                 };
 
-                return flights;
+                return Task.FromResult(Result.Ok(flights));
             }
         }
 
