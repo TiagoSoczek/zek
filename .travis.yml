@@ -10,5 +10,5 @@ env:
 script:
   - dotnet build
   - cd ./src/Zek.Shared
-  - dotnet pack -c Release --version-suffix $TRAVIS_BUILD_NUMBER -o dist
-  - dotnet nuget push ./dist/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
+  - dotnet pack -c Release --version-suffix alpha-$TRAVIS_BUILD_NUMBER -o ./bin/packages
+  - dotnet nuget push ./bin/packages/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
